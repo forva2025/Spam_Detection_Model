@@ -21,17 +21,52 @@ TOKEN_RE = re.compile(r"[a-z0-9]+(?:'[a-z0-9]+)?")
 
 EXAMPLES = {
     "Choose an example…": "",
-    "Suspicious prize": (
-        "CONGRATULATIONS! You have won a $5,000 cash prize. Click the link now "
-        "to claim your reward. This offer expires today!"
+    "Prize claim · obvious spam": (
+        "Subject: You are our $5,000 grand-prize winner!\n\n"
+        "CONGRATULATIONS! Your email address was selected in our international "
+        "rewards drawing. A $5,000 cash prize is waiting for you. To release the "
+        "funds, reply with your full name, telephone number, and mailing address, "
+        "then pay the small processing fee. You must claim the reward today or it "
+        "will be transferred to another winner.\n\nPrize Department"
     ),
-    "Account warning": (
-        "Urgent: Your account has been suspended. Verify your password and bank "
-        "details immediately to restore access."
+    "Payroll verification · phishing": (
+        "Subject: Immediate action required — payroll account locked\n\n"
+        "Dear employee,\n\nWe detected unusual activity and temporarily suspended "
+        "your payroll account. To avoid a delay to your next payment, verify your "
+        "identity within 30 minutes using the secure link below. You will need your "
+        "employee login, password, and banking information. Failure to complete "
+        "verification today may result in permanent account closure.\n\nPayroll Security Team"
     ),
-    "Normal work email": (
-        "Hi team, please review the attached project notes before our meeting on "
-        "Thursday. Let me know if you have any questions. Thanks!"
+    "Unpaid invoice · malicious attachment": (
+        "Subject: Final notice — invoice 88421 remains unpaid\n\n"
+        "Our records show that invoice 88421 is now 45 days overdue. Open the "
+        "attached payment statement and enable editing to review the outstanding "
+        "balance. Remit payment immediately to prevent collection activity and a "
+        "suspension of services. If you believe this message was sent in error, "
+        "reply with your account credentials so we can investigate.\n\nAccounts Receivable"
+    ),
+    "Limited-time promotion · marketing": (
+        "Subject: Weekend offer — save 30% on your next order\n\n"
+        "Hello,\n\nOur weekend sale has started. Use promotional code WEEKEND30 "
+        "at checkout to receive 30% off selected products through Sunday at midnight. "
+        "This is a promotional message sent because you subscribed to product updates. "
+        "You can update your email preferences at any time.\n\nThe Store Team"
+    ),
+    "Project review · legitimate work email": (
+        "Subject: Draft launch plan for Thursday's review\n\n"
+        "Hi team,\n\nI incorporated the comments from yesterday's planning session "
+        "into the attached launch plan. Please review sections two and four before our "
+        "meeting on Thursday at 10:00 a.m. I would especially appreciate feedback on "
+        "the proposed timeline and ownership table. Add comments in the document or "
+        "send them to me by Wednesday afternoon.\n\nThanks,\nMorgan"
+    ),
+    "Appointment confirmation · legitimate service email": (
+        "Subject: Your service appointment is confirmed\n\n"
+        "Hello,\n\nThis message confirms your service appointment for Tuesday, "
+        "November 24 at 2:30 p.m. No action is required. If you need to reschedule, "
+        "please use the contact information from your original booking confirmation. "
+        "Our representative will arrive during the selected appointment window.\n\n"
+        "Customer Care"
     ),
 }
 
@@ -156,7 +191,18 @@ st.markdown(
     .result-card h2 {margin: 0 0 .35rem;}
     .result-card p {margin: 0; opacity: .9;}
     .small-note {color: #64748b; font-size: .86rem;}
-    div[data-testid="stMetric"] {background: white; border: 1px solid #e2e8f0; padding: 1rem; border-radius: 14px;}
+    div[data-testid="stMetric"] {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        padding: 1rem;
+        border-radius: 14px;
+        color: #172033;
+    }
+    div[data-testid="stMetric"] label,
+    div[data-testid="stMetric"] [data-testid="stMetricValue"],
+    div[data-testid="stMetric"] [data-testid="stMetricDelta"] {
+        color: #172033;
+    }
     </style>
     """,
     unsafe_allow_html=True,
