@@ -6,6 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score, f1_score   
 import seaborn as sns #dynamical visualization
 import matplotlib.pyplot as plt #static visualization
+import joblib
 
 
 #load data
@@ -52,3 +53,6 @@ cm = confusion_matrix(y_test, y_pred)
 sns.heatmap(cm, annot=True, fmt='d')
 plt.title("Confusion Matrix")
 plt.show()
+
+#save the model for deployment
+joblib.dump(model,"spam_detection_pipeline.joblib")
