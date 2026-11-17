@@ -41,10 +41,13 @@ The dataset is moderately imbalanced, with legitimate emails representing roughl
 
 ```text
 Spam_Detection_Model/
-|-- spam_detect.py    # Data loading, model training, and evaluation
-|-- spam_data.csv     # Precomputed email features and target labels
-|-- README.md         # Project documentation
-`-- LICENSE           # MIT License
+|-- app.py                              # Interactive Streamlit showcase
+|-- spam_detect.py                      # Model training and evaluation
+|-- spam_detection_pipeline.joblib      # Saved trained classifier
+|-- spam_data.csv                       # Word features and target labels
+|-- requirements.txt                    # Python dependencies
+|-- README.md                           # Project documentation
+`-- LICENSE                             # MIT License
 ```
 
 ## Requirements
@@ -90,6 +93,20 @@ python spam_detect.py
 ```
 
 The CSV file must remain in the same directory as the script because the program loads it using the relative path `spam_data.csv`.
+
+### Streamlit demo
+
+Install the dependencies and launch the interactive UI from the repository root:
+
+```bash
+python -m pip install -r requirements.txt
+streamlit run app.py
+```
+
+The app accepts pasted email text, shows the model's spam probability, lets you adjust
+the classification threshold, and explains the most influential recognized words. It
+loads the saved `spam_detection_pipeline.joblib` model and uses the dataset header to
+recreate the same 3,000 word-count features used during training.
 
 During execution, the script:
 
@@ -150,7 +167,7 @@ For spam filtering, precision and recall often matter more than accuracy alone. 
 
 ## Current limitations
 
-- The script trains a model each time it runs and does not save the trained model to disk.
+- The training script retrains the model each time it runs instead of reusing the saved artifact.
 - It operates on precomputed word features and does not accept raw email text directly.
 - The evaluation uses one train/test split rather than cross-validation.
 - The split is not currently stratified, so class proportions are not explicitly preserved in each subset.
