@@ -124,7 +124,25 @@ st.markdown(
     """
     <style>
     .block-container {padding-top: 2.2rem; padding-bottom: 3rem; max-width: 1180px;}
-    [data-testid="stSidebar"] {background: #f7f8fc;}
+    [data-testid="stSidebar"] {
+        background: #e9eef5;
+        color: #172033;
+        border-right: 1px solid #cbd5e1;
+    }
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3,
+    [data-testid="stSidebar"] h4,
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
+        color: #172033;
+    }
+    [data-testid="stSidebar"] [data-testid="stCaptionContainer"],
+    [data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {
+        color: #475569;
+    }
+    [data-testid="stSidebar"] hr {border-color: #cbd5e1;}
     .hero {
         padding: 2.2rem 2.4rem; border-radius: 22px; color: white;
         background: linear-gradient(120deg, #172554 0%, #3730a3 58%, #0f766e 100%);
